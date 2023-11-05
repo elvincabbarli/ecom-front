@@ -157,7 +157,7 @@ const Footer = () => {
         <div class="footer-copyright">
           <div class="site-copyright">
             <p>
-              Copyright 2023 © E-Commerce. All right reserved. Powered by Cabbarlı.
+              Copyright 2023 © E-Commerce. All right reserved. Powered by <a href="https://cabbarli.netlify.app"><b>Cabbarlı</b></a>
             </p>
           </div>
           <a href="/">
