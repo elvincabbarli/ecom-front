@@ -157,7 +157,7 @@ const Footer = () => {
         <div class="footer-copyright">
           <div class="site-copyright">
             <p>
-              Copyright 2022 © E-Commerce Theme. All right reserved. Powered by Emin Basbayan.
+              Copyright 2023 © E-Commerce. All right reserved. Powered by Cabbarlı.
             </p>
           </div>
           <a href="/">

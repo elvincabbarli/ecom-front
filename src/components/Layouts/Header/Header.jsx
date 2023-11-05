@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './Header.css'
 import { Link, useLocation } from 'react-router-dom'
 import { CartContext } from '../../../context/CardProvider'
@@ -6,6 +6,9 @@ import { CartContext } from '../../../context/CardProvider'
 const Header = ({ setIsSearchOpened }) => {
     const { cartItems } = useContext(CartContext)
     const { pathname } = useLocation()
+
+    const [mobileActive , setMobileActive] = useState(false)
+
 
     return (
         <header>
@@ -22,12 +25,12 @@ const Header = ({ setIsSearchOpened }) => {
                 <div className="container">
                     <div className="header-wrapper">
                         <div className="header-mobile">
-                            <i className="bi bi-list" id="btn-menu"></i>
+                            <i className="bi bi-list" id="btn-menu" onClick={() => setMobileActive(true)}></i>
                         </div>
                         <div className="header-left">
                             <Link to="/" className="logo">LOGO</Link>
                         </div>
-                        <div className="header-center" id="sidebar">
+                        <div className={`header-center ${mobileActive ? 'mobile-active' : ''}`} id="sidebar">
                             <nav className="navigation">
                                 <ul className="menu-list">
                                     <li className="menu-list-item">
@@ -177,7 +180,7 @@ const Header = ({ setIsSearchOpened }) => {
                                     </li>
                                 </ul>
                             </nav>
-                            <i className="bi-x-circle" id="close-sidebar"></i>
+                            <i className="bi-x-circle" id="close-sidebar" onClick={() => setMobileActive(false)}></i>
                         </div>
                         <div className="header-right">
                             <div className="header-right-links">
