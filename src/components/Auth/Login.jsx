@@ -12,7 +12,6 @@ const Login = () => {
     })
 
     const navigate = useNavigate()
-    const apiUrl = process.env.REACT_APP_API_BASE_URL
     const { setIsLogged } = useContext(CartContext);
 
 
@@ -24,7 +23,7 @@ const Login = () => {
     const handleSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${apiUrl}/api/auth/login`, {
+            const response = await fetch('https://ecom-back-jzey.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"

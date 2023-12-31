@@ -10,7 +10,6 @@ const Register = () => {
     })
 
     const navigate = useNavigate()
-    const apiUrl = process.env.REACT_APP_API_BASE_URL
 
     const handleOnChange = (e) => {
         const { name, value } = e.target
@@ -20,7 +19,7 @@ const Register = () => {
     const handleSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${apiUrl}/api/auth/register`, {
+            const response = await fetch('https://ecom-back-jzey.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
