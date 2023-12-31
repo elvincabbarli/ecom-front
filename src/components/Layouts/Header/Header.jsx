@@ -4,10 +4,18 @@ import { Link, useLocation } from 'react-router-dom'
 import { CartContext } from '../../../context/CardProvider'
 
 const Header = ({ setIsSearchOpened }) => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, isLogged, setIsLogged } = useContext(CartContext)
     const { pathname } = useLocation()
 
-    const [mobileActive , setMobileActive] = useState(false)
+    const [mobileActive, setMobileActive] = useState(false)
+
+    const handleExit = () => {
+        if (window.confirm('Çıkmak İstediyinizden Emin Misiniz ?')) {
+            localStorage.removeItem('user')
+            window.location.href = '/auth'
+        }
+        setIsLogged(false)
+    }
 
 
     return (
@@ -184,21 +192,28 @@ const Header = ({ setIsSearchOpened }) => {
                         </div>
                         <div className="header-right">
                             <div className="header-right-links">
-                                <Link to='/auth' className="header-account">
-                                    <i className="bi bi-person"></i>
-                                </Link>
+                                {isLogged ? <Link to='/profile'> <i className="bi bi-person"></i></Link> :
+                                    <Link to='/auth' className="header-account">
+                                        <i className="bi bi-person"></i>
+                                    </Link>
+                                }
+
+
+
                                 <button className="search-button" onClick={() => setIsSearchOpened(true)}>
                                     <i className="bi bi-search"></i>
                                 </button>
-                                <a href="/">
-                                    <i className="bi bi-heart"></i>
-                                </a>
                                 <div className="header-cart">
                                     <Link to='/cart' className="header-cart-link">
                                         <i className="bi bi-bag"></i>
                                         <span className="header-cart-count">{cartItems.length}</span>
                                     </Link>
                                 </div>
+                                {
+                                    isLogged && <button className="search-button" onClick={handleExit}>
+                                        <i className="bi bi-box-arrow-right"></i>
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>

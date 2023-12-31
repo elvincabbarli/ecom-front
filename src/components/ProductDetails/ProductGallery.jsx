@@ -32,7 +32,21 @@ const ProductGallery = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
         nextArrow: <NextBtn />,
-        prevArrow: <PrevBtn />
+        prevArrow: <PrevBtn />,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     }
 
     return (
